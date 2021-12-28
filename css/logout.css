@@ -1,0 +1,13 @@
+.message{
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    color: green;
+    float: right;
+}
+
+.success{
+    font-size: 18px;
+    margin-top: 15px;
+    color: seagreen;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,47 @@
+ var firebaseConfig = {
+    apiKey: "AIzaSyAxn90YiLiTyAu8egzFer74Q3uAFznRKeM",
+    authDomain: "login-and-registration-dc851.firebaseapp.com",
+    projectId: "login-and-registration-dc851",
+    storageBucket: "login-and-registration-dc851.appspot.com",
+    messagingSenderId: "567045467050",
+    appId: "1:567045467050:web:7e28b1eb6b8bed9564d9d3"
+  };
+
+document.getElementById("loginForm").addEventListener("submit",(event)=>{
+    event.preventDefault()
+})
+
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        location.replace("about.html")
+    }
+})
+
+function login(){
+    const email = document.getElementById("email").value
+    const password = document.getElementById("password").value
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch((error)=>{
+        document.getElementById("error").innerHTML = error.message
+    })
+}
+
+function signUp(){
+    const email = document.getElementById("email").value
+    const password = document.getElementById("password").value
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .catch((error) => {
+        document.getElementById("error").innerHTML = error.message
+    });
+}
+
+function forgotPass(){
+    const email = document.getElementById("email").value
+    firebase.auth().sendPasswordResetEmail(email)
+    .then(() => {
+        alert("Reset link sent to your email id")
+    })
+    .catch((error) => {
+        document.getElementById("error").innerHTML = error.message
+    });
+}
